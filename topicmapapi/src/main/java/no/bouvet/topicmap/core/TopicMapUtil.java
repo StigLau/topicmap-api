@@ -22,7 +22,7 @@ import no.bouvet.topicmap.query.TologQuery;
  * It handles all the intricate parts of the TM system and returns a nice set of topic lists as a result
  * It is not not to be polluted by tolog querys
  *
- * @author n05609 Stig Lau, Bouvet AS
+ * @author Stig Lau, Bouvet AS
  */
 public class TopicMapUtil {
     private static final Log log = LogFactory.getLog(TopicMapUtil.class);
@@ -103,7 +103,6 @@ public class TopicMapUtil {
 
 
     /**
-     * @Deprecated - not in use?
      * @param original
      * @return
      */
@@ -129,6 +128,4 @@ public class TopicMapUtil {
     public static TopicIF getTopicIFByPSI(String psi, TopicMapIF topicMapIF) {
         return topicMapIF.getTopicByIndicator(URIUtils.getURILocator(psi));
     }
-
-
 }
