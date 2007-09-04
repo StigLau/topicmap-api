@@ -1,9 +1,9 @@
 package no.bouvet.topicmap.opera;
 
-import static no.bouvet.topicmap.query.TologFragmentUtil.asParameter;
+import static no.bouvet.topicmap.query.AssociationTypeFactory.createAssociationString;
 import no.bouvet.topicmap.query.ITologFragment;
 import no.bouvet.topicmap.query.ITopicParameter;
-import no.bouvet.topicmap.query.TologFragmentUtil;
+import no.bouvet.topicmap.query.AssociationTypeFactory;
 
 /**
  * @author Stig Lau, Bouvet ASA
@@ -15,37 +15,37 @@ public enum OperaAssociationType implements ITologFragment {
      * Parameters: COMPOSER, OPERA
      */
     COMPOSED_BY {public String[] tologQuery(ITopicParameter... parameters) {
-        return new String[]{"composed-by(" + asParameter(parameters[0]) + ", " + asParameter(parameters[1]) + ")"};
+        return createAssociationString("composed-by", new String[]{"", ""}, parameters);
     }
     },
     /**
      * OPERA, SOMETHING
      */
     BASED_ON {public String[] tologQuery(ITopicParameter... parameters) {
-        return new String[]{"based-on($"+ parameters[0].getIdentifyer() + " : result, $"+ parameters[1].getIdentifyer()+" : source)"};
+        return createAssociationString("based-on", new String[]{"result", "source"}, parameters);
     }
     },
     /**
      * WORK, WRITER
      */
     WRITTEN_BY {public String[] tologQuery(ITopicParameter... parameters) {
-        return new String[]{"written-by($"+ parameters[0].getIdentifyer() + " : work, $" + parameters[1].getIdentifyer()+" : writer)"};
+        return createAssociationString("written-by", new String[]{"work", "writer"}, parameters);
     }
     },
     BORN_IN {public String[] tologQuery(ITopicParameter... parameters) {
-        return new String[]{"born-in("+ asParameter(parameters[0]) + ", "+asParameter(parameters[1])+")"};
+        return createAssociationString("born-in", new String[]{"", ""}, parameters);
     }
     },
     DIED_IN {public String[] tologQuery(ITopicParameter... parameters) {
-        return new String[]{"died-in("+ asParameter(parameters[0]) + ", "+asParameter(parameters[1])+")"};
+        return createAssociationString("died-in", new String[]{"", ""}, parameters);
     }
     },
     KILLED_BY {public String[] tologQuery(ITopicParameter... parameters) {
-        return new String[]{"killed-by($"+ parameters[0].getIdentifyer() + " : victim, $"+parameters[1].getIdentifyer()+" : perpetrator)"};
+        return createAssociationString("killed-by", new String[]{"victim", "perpetrator"}, parameters);
     }
     };
 
     public String asString(ITopicParameter... parameters) {
-        return TologFragmentUtil.asString(this, parameters);
+        return AssociationTypeFactory.asString(this, parameters);
     }
 }

@@ -4,7 +4,6 @@ import static junit.framework.Assert.assertEquals;
 import net.ontopia.topicmaps.core.TopicIF;
 import net.ontopia.topicmaps.utils.TopicStringifiers;
 import no.bouvet.topicmap.AbstractTopicMapTestFixture;
-import no.bouvet.topicmap.core.TopicMapUtil;
 import no.bouvet.topicmap.dao.TopicDAO;
 import no.bouvet.topicmap.opera.OperaAssociationType;
 import no.bouvet.topicmap.opera.OperaTopicType;
@@ -31,29 +30,19 @@ public class TologQueryTest extends AbstractTopicMapTestFixture {
 
 
     @Test
-    public void createSuperTologFragmentWithSingleInput() {
+    public void testOperasComposedByPuccini() {
         ITopicParameter composer = new StandardTopicParameter(puccini);
         ITopicParameter opera = new StandardTopicParameter(OperaTopicType.OPERA);
-
         TologQuery tologQuery = new TologQuery(OperaAssociationType.COMPOSED_BY, opera, composer);
         tologQuery.orderBy(SortOrder.ASC, opera);
+        tologQuery.setCountParameter(opera);
 
-        assertEquals("select $OPERA from\n" +
+        assertEquals("select count ($OPERA) from\n" +
                 "composed-by($OPERA : work, %COMPOSER% : composer)\n" +
                 "order by $OPERA ASC?\n" +
                 "Arguments:\n" +
                 "OPERA\n" +
                 "COMPOSER : Puccini, Giacomo", tologQuery.toString());
-
-
-        List result = topicmap.queryForList(tologQuery, opera);
-
-        System.out.println("Found:");
-        for (Object o : result) {
-            TopicIF topicIF = (TopicIF) o;
-            System.out.println(topicIF.getBaseNames().toArray()[0]);
-        }
-        tologQuery.setCountParameter(opera);
         Integer count = topicmap.queryForSingleValue(tologQuery, opera);
         assertEquals(12, count.intValue());
     }
