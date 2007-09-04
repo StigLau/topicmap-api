@@ -9,7 +9,7 @@ import org.apache.commons.lang.StringUtils;
 public class AssociationTypeFactory {
     public static String[] createAssociationString(String association, String[] associationRoles, ITopicParameter[] parameters) {
         if(associationRoles.length != parameters.length) {
-            throw new IllegalArgumentException("Incosistent number of parameters: associationroles " + associationRoles.length + ", parameters " + parameters.length);
+            throw new IllegalArgumentException("Inconsistent number of parameters: associationroles " + associationRoles.length + ", parameters " + parameters.length);
         }
         String result = association + "(";
         boolean firstParameter = true;
