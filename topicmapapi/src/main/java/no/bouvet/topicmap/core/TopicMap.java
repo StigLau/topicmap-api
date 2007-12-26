@@ -8,7 +8,7 @@ import net.ontopia.topicmaps.query.core.DeclarationContextIF;
 import net.ontopia.topicmaps.query.core.InvalidQueryException;
 import net.ontopia.topicmaps.query.core.QueryResultIF;
 import net.ontopia.topicmaps.query.utils.QueryUtils;
-import no.bouvet.topicmap.query.TologQuery;
+import no.bouvet.topicmap.query.ITologQuery;
 import no.bouvet.topicmap.query.ITopicParameter;
 import no.bouvet.topicmap.dao.TopicDAO;
 import no.bouvet.topicmap.dao.TopicType;
@@ -70,7 +70,7 @@ public abstract class TopicMap {
     }
 
     // Returns the specified object or null
-    public <T> T queryForSingleValue(TologQuery tologQuery, ITopicParameter resultParameterField) {
+    public <T> T queryForSingleValue(ITologQuery tologQuery, ITopicParameter resultParameterField) {
         List<T> resultAsList = queryForList(tologQuery, resultParameterField);
         if(resultAsList.size() == 0) {
             return null;
@@ -81,7 +81,7 @@ public abstract class TopicMap {
         }
     }
 
-    public Map queryForMap(TologQuery tologQuery, ITopicParameter keyName, ITopicParameter valueName) {
+    public Map queryForMap(ITologQuery tologQuery, ITopicParameter keyName, ITopicParameter valueName) {
         final String localKeyName = keyName.getIdentifyer();
         final String localValueName = valueName.getIdentifyer();
 
@@ -109,7 +109,7 @@ public abstract class TopicMap {
         }
     }
 
-    public<T> List<T> queryForList(TologQuery tologQuery, ITopicParameter fieldValue) {
+    public<T> List<T> queryForList(ITologQuery tologQuery, ITopicParameter fieldValue) {
         final String localKeyName = fieldValue.getIdentifyer();
 
         System.out.println("tologQuery:\n" + tologQuery.toString() + ". Get Field: " + localKeyName);

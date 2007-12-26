@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
-import no.bouvet.topicmap.query.TologQuery;
+import no.bouvet.topicmap.query.ITologQuery;
 
 /**
  * The Topic Map Adapter Util is concerned with the java-technik part of communicating with and querying the topic map.
@@ -40,7 +40,7 @@ public class TopicMapUtil {
      * @deprecated - consider using the one with rowmapper
      */
 
-    public static Object executeTologQuery(TologQuery tologQuery, String fieldName, DeclarationContextIF declarationContextIF, TopicMapIF topicMapIF) {
+    public static Object executeTologQuery(ITologQuery tologQuery, String fieldName, DeclarationContextIF declarationContextIF, TopicMapIF topicMapIF) {
         System.out.println(tologQuery.toString());
         if (log.isDebugEnabled()) {
             log.debug("Executing Query:" + tologQuery);
@@ -76,7 +76,7 @@ public class TopicMapUtil {
     /**
      * New improved version with SpringHibernateTemplate look'n'feel
      */
-    public static Object executeTologQuery(TologQuery tologQuery, RowMapper rowmapper, DeclarationContextIF declarationContextIF, TopicMapIF topicMapIF) {
+    public static Object executeTologQuery(ITologQuery tologQuery, RowMapper rowmapper, DeclarationContextIF declarationContextIF, TopicMapIF topicMapIF) {
         String tologQueryAsString = tologQuery.asString();
         Map arguments = tologQuery.getArguments();
 

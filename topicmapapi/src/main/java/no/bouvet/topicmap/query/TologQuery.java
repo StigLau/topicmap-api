@@ -11,7 +11,7 @@ import java.util.Map;
  * It's main goal is for helping with a simpler interface for using sorting, filtering and pageing.
  * @author Stig Lau
  */
-public class TologQuery {
+public class TologQuery implements ITologQuery {
     private List<FragmentHolder> queryFragments = new ArrayList<FragmentHolder>();
     private List<ITopicParameter> arguments = new ArrayList<ITopicParameter>();
 

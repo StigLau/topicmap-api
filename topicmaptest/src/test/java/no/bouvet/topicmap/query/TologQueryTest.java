@@ -67,7 +67,7 @@ public class TologQueryTest extends AbstractTopicMapTestFixture {
     public void testWithInterface() {
         ITopicParameter operaType = new StandardTopicParameter(OperaTopicType.OPERA);
         ITopicParameter composer = new StandardTopicParameter(OperaTopicType.COMPOSER);
-        TologQuery tologQuery = new TologQuery(OperaAssociationType.COMPOSED_BY, operaType, composer);
+        ITologQuery tologQuery = new TologQuery(OperaAssociationType.COMPOSED_BY, operaType, composer);
         assertEquals(
                 "select $OPERA, $COMPOSER from\n" +
                 "composed-by($OPERA : work, $COMPOSER : composer)?\n" +
