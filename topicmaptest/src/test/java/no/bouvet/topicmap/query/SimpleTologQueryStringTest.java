@@ -28,6 +28,7 @@ public class SimpleTologQueryStringTest extends AbstractTopicMapTestFixture {
         assertEquals("1858-12-22", topicmap.queryForSingleValue(
                 tologQuery, new StandardTopicParameter(SimpleTopicTypeFactory.create("BIRTHDATE"))));
     }
+    // Validation tests
     
     @Test (expected = IllegalArgumentException.class)
     public void testNullArgumentInputThrowsValidationExceptions() {
