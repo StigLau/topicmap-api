@@ -69,13 +69,15 @@ public abstract class TopicMap {
         return new TopicDAO(topicIf);
     }
 
-
+    // Returns the specified object or null
     public <T> T queryForSingleValue(TologQuery tologQuery, ITopicParameter resultParameterField) {
         List<T> resultAsList = queryForList(tologQuery, resultParameterField);
-        if(resultAsList.size() > 1) {
-            throw new ArithmeticException("Resultset contained " + resultAsList.size() + " entries. Expected 0 or one");
-        } else {
+        if(resultAsList.size() == 0) {
+            return null;
+        } else if(resultAsList.size() == 1){
             return resultAsList.get(0);
+        } else {
+            throw new ArithmeticException("Resultset contained " + resultAsList.size() + " entries. Expected 0 or one");
         }
     }
 
@@ -109,6 +111,8 @@ public abstract class TopicMap {
 
     public<T> List<T> queryForList(TologQuery tologQuery, ITopicParameter fieldValue) {
         final String localKeyName = fieldValue.getIdentifyer();
+
+        System.out.println("tologQuery:\n" + tologQuery.toString() + ". Get Field: " + localKeyName);
 
         RowMapper rowmapper = new RowMapper() {
             private List<T> result = new ArrayList<T>();

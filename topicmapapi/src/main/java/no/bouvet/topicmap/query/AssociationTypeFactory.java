@@ -20,7 +20,7 @@ public class AssociationTypeFactory {
             } else {
                 firstParameter = false;
             }
-            if(StringUtils.isNotBlank(associationRoles[1])) {
+            if(StringUtils.isNotBlank(associationRoles[i])) {
                 result += "$" + parameter.getIdentifyer();
                 result += " : " + associationRoles[i];
             } else {
