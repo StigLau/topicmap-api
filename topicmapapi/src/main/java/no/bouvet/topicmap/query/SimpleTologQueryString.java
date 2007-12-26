@@ -19,6 +19,11 @@ public class SimpleTologQueryString implements ITologQuery {
     private TopicDAO argument;
     private String argumentName;
 
+    public SimpleTologQueryString(String tologQuery) {
+        Validate.isTrue(StringUtils.isNotBlank(tologQuery), "QueryString may not be blank");
+        this.tologQuery = tologQuery;
+    }
+
     public SimpleTologQueryString(String tologQuery, TopicDAO argument, String argumentName) {
         Validate.isTrue(StringUtils.isNotBlank(tologQuery), "QueryString may not be blank");
         Validate.notNull(argument, "Argument may not be null");

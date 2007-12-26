@@ -5,6 +5,7 @@ import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 import no.bouvet.topicmap.AbstractTopicMapTestFixture;
 import no.bouvet.topicmap.dao.TopicDAO;
+import java.util.List;
 
 /**
  * Simple test for showing usage of SimpleTologQueryString and extraction of occurrance types
@@ -28,19 +29,26 @@ public class SimpleTologQueryStringTest extends AbstractTopicMapTestFixture {
                 topicmap.queryForSingleValue(tologQuery, SimpleTopicParameterFactory.create("BIRTHDATE")));
     }
     // Validation tests
-    
-    @Test (expected = IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void testNullArgumentInputThrowsValidationExceptions() {
         new SimpleTologQueryString("date-of-birth(%COMPOSER%, $BIRTHDATE)?", null, "COMPOSER");
     }
-    
-    @Test (expected = IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void testBlankArgumentNameThrowsValidationExceptions() {
         new SimpleTologQueryString("date-of-birth(%COMPOSER%, $BIRTHDATE)?", puccini, "");
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testBlankQueryThrowsValidationExceptions() {
         new SimpleTologQueryString("   ", puccini, "COMPOSER");
+    }
+
+    @Test
+    public void testSimplerVersion() {
+        ITologQuery tologQuery = new SimpleTologQueryString("instance-of($SOMETHING, $SOMETHINGOTHER)?");
+        List resutl = topicmap.queryForList(tologQuery, SimpleTopicParameterFactory.create("SOMETHINGOTHER"));
+        assertEquals(49, resutl.size());
     }
 }
