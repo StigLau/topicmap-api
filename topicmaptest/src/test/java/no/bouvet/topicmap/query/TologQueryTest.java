@@ -94,7 +94,7 @@ public class TologQueryTest extends AbstractTopicMapTestFixture {
                 "select $OPERA, $COMPOSER, $SOURCE from\n" +
                 "composed-by($OPERA : work, $COMPOSER : composer),\n" +
                 "based-on($OPERA : result, $SOURCE : source),\n" +
-                "written-by($SOURCE : work, $WRITER : writer)?\n" +
+                "written-by($SOURCE : work, %WRITER% : writer)?\n" +
                 "Arguments:\n" +
                 "OPERA\n" +
                 "COMPOSER\n" +
@@ -102,7 +102,7 @@ public class TologQueryTest extends AbstractTopicMapTestFixture {
                 "WRITER : Shakespeare, William", tologQuery.toString());
         
         List<TopicIF> result = topicmap.queryForList(tologQuery, composer);
-        assertEquals("Wrong number of inspirees", 13, result.size());
+        assertEquals("Wrong number of inspirees", 1, result.size());
 
         for (TopicIF topicIF : result) {
             System.out.println(TopicStringifiers.toString(topicIF));

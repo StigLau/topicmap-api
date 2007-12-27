@@ -21,8 +21,13 @@ public class AssociationTypeFactory {
                 firstParameter = false;
             }
             if(StringUtils.isNotBlank(associationRoles[i])) {
-                result += "$" + parameter.getIdentifyer();
+                if (parameter.getTopicDao() != null) {
+                    result += "%" + parameter.getIdentifyer() + "%";
+                } else {
+                    result += "$" + parameter.getIdentifyer();
+                }
                 result += " : " + associationRoles[i];
+
             } else {
                 result += createSingleParameter(parameter);
             }
