@@ -41,7 +41,6 @@ public class TopicMapUtil {
      */
 
     public static Object executeTologQuery(ITologQuery tologQuery, String fieldName, DeclarationContextIF declarationContextIF, TopicMapIF topicMapIF) {
-        System.out.println(tologQuery.toString());
         if (log.isDebugEnabled()) {
             log.debug("Executing Query:" + tologQuery);
         }

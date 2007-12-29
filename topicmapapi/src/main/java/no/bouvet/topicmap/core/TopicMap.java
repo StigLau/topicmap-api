@@ -112,7 +112,7 @@ public abstract class TopicMap {
     public<T> List<T> queryForList(ITologQuery tologQuery, ITopicParameter fieldValue) {
         final String localKeyName = fieldValue.getIdentifyer();
 
-        System.out.println("tologQuery:\n" + tologQuery.toString() + ". Get Field: " + localKeyName);
+        log.debug("tologQuery:\n" + tologQuery.toString() + ". Get Field: " + localKeyName);
 
         RowMapper rowmapper = new RowMapper() {
             private List<T> result = new ArrayList<T>();
