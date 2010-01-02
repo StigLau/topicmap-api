@@ -8,18 +8,13 @@
     <parent>
         <groupId>no.bouvet.topicmap</groupId>
         <artifactId>root</artifactId>
-        <version>0.1</version>
+        <version>0.2</version>
     </parent>
 
     <dependencies>
 		<dependency>
 			<groupId>no.bouvet.topicmap</groupId>
 			<artifactId>topicmapapi</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
 		</dependency>
     </dependencies>
 </project>

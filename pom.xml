@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.bouvet.topicmap</groupId>
     <artifactId>root</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <packaging>pom</packaging>
     <name>Topicmap Root</name>
-    
+
     <contributors>
         <contributor>
             <name>Stig Lau</name>
@@ -15,24 +15,12 @@
         </contributor>
     </contributors>
 
-    <!-- Subversion Configuration - Used by Continuum -->
-    <scm>
-        <connection>scm:svn:http://svn.bouvet.no/svn/trunk/topicmap</connection>
-        <url>http://svn.bouvet.no/svn/trunk/topicmap</url>
-    </scm>
-    
-	<repositories>
-		<repository>
-			<id>lau.no</id>
-            <url>http://88.198.50.185:8081/artifactory/repo</url>
+    <repositories>
+        <repository>
+            <id>Ontopia</id>
+            <url>http://ontopia.googlecode.com/svn/maven-repository</url>
         </repository>
     </repositories>
-    <distributionManagement>
-	    <repository>
-	        <id>lau.no</id>
-            <url>dav:http://88.198.50.185:8081/artifactory/libs-releases</url>
-        </repository>
-    </distributionManagement>
 
     <modules>
         <module>topicmapapi</module>
@@ -43,18 +31,31 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.4</version>
-                <scope>test</scope>
+                <groupId>no.bouvet.topicmap</groupId>
+                <artifactId>topicmapapi</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.ontopia</groupId>
-                <artifactId>oks-sampler</artifactId>
-                <version>3.3.0</version>
+                <artifactId>ontopia-engine</artifactId>
+                <version>5.0.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>saxon</groupId>
+                        <artifactId>saxon</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -67,18 +68,6 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav</artifactId>
-                <version>1.0-beta-2</version>
-            </extension>
-        </extensions>
     </build>
 </project>
