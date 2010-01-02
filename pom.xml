@@ -17,6 +17,10 @@
 
     <repositories>
         <repository>
+            <id>local</id>
+            <url>file://${basedir}/lib</url>
+        </repository>
+        <repository>
             <id>Ontopia</id>
             <url>http://ontopia.googlecode.com/svn/maven-repository</url>
         </repository>
@@ -37,14 +41,13 @@
             </dependency>
             <dependency>
                 <groupId>net.ontopia</groupId>
-                <artifactId>ontopia-engine</artifactId>
-                <version>5.0.0</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>saxon</groupId>
-                        <artifactId>saxon</artifactId>
-                    </exclusion>
-                </exclusions>
+                <artifactId>oks-sampler</artifactId>
+                <version>3.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>thaiopensource</groupId>
+                <artifactId>jing</artifactId>
+                <version>2003-01-31</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

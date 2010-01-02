@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>net.ontopia</groupId>
-            <artifactId>ontopia-engine</artifactId>
+            <artifactId>oks-sampler</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
@@ -32,12 +32,9 @@
             <version>1.2.14</version>
         </dependency>
         <!-- For parsing xtm/xml files -->
-        <!--
         <dependency>
             <groupId>thaiopensource</groupId>
             <artifactId>jing</artifactId>
-            <version>2003-01-31</version>
         </dependency>
-        -->
     </dependencies>
 </project>
